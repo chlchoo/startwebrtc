@@ -15,16 +15,19 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
 
+const sockets = [];
+
 wss.on("connection", (socket) =>{
+    sockets.push(socket);
     console.log("Connected to Browser ✔");
     socket.on("close", () => {
         console.log("Disconected From Browser ❌");
     });
-    socket.on('message', message => {
-        const translatedMessageData = message.toString('utf8');
-        console.log(translatedMessageData);
-      });
-    socket.send("hello");
+    // ws 버전이 옛날 버전이여서 이렇게 데이터를 변형 해줘야 한다. 업데이트를 하면 해결 
+    socket.on("message", (message) => {
+        console.log(message.toString("utf-8"));
+        sockets.forEach(aSocket => aSocket.send(message.toString()));
+    });
 });
 
 server.listen(3000, handleListen);
