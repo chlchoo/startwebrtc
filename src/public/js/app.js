@@ -27,6 +27,9 @@ function handleSubmit(event) {
     event.preventDefault();
     const input = messageForm.querySelector("input");
     socket.send(makeMessage("new_massage", input.value));
+    const li = document.createElement("li");
+    li.innerText = `You: ${input.value}`;
+    massageList.append(li);
     input.value = "";
 }
 
