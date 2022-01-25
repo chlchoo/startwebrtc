@@ -9,7 +9,7 @@ html(lang="en")
 
     body
         header
-            h1 Noom
+            h1 WebRtc
         main
             div#welcome
                 form
@@ -26,6 +26,11 @@ html(lang="en")
                 form#msg
                     input(placeholder="message", required, type="text")
                     button Send
+            div#myStream
+                video#myFace(autoplay,playsinline, muted, width="400", height="400")
+                button#mute Mute
+                button#camera Turn Camera Off
+                select#cameras
 
         script(src="socket.io/socket.io.js")   
         script(src="/public/js/app.js")
