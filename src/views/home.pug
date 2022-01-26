@@ -6,39 +6,19 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Noom
         link(rel="stylesheet", href="https://unpkg.com/mvp.css")
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     body
         header
-            h1 WebRtc
+            h1 Noom
         main
             div#welcome
-                form
-                    input(type="text", placeholder="room name", required)
-                    button Enter Room 
-                h4 Open Rooms:
-                ul 
-            div#room
-                h3
-                ul
-                form#name
-                    input(placeholder="message", required, type="text")
-                    button Send
-                form#msg
-                    input(placeholder="message", required, type="text")
-                    button Send
-            div#myStream
-                video#myFace(autoplay,playsinline, muted, width="400", height="400")
-                button#mute Mute
-                button#camera Turn Camera Off
-                input#check01(type="checkbox", name="check01")
-                label(for="check01") 내 화면 좌우반전
-                select#cameras
-
-                <div class="container">
-                <button class="enterFullscreenBtn">Fullscreen</button>
-                <button class="exitFullscreenBtn">Cancel Fullscreen</button>
-                <button class="toggleFullscreenBtn">Toggle Fullscreen</button>
-                </div>
-
-        script(src="socket.io/socket.io.js")   
-        script(src="/public/js/app.js")
+                form    
+                    input(placeholder="room name", required, type="text")
+                    button Enter room
+            div#call
+                div#myStream
+                    video#myFace(autoplay,playsinline, width="400", height="400")
+                    button#mute Mute
+                    button#camera Turn Camera Off
+                    select#cameras
+        script(src="/socket.io/socket.io.js") 
+        script(src="/public/js/app.js")  
